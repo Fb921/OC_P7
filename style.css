@@ -1,0 +1,95 @@
+header{
+    text-align:center;
+    margin:42px 0 17px 0;
+}
+
+.logo{
+    width:50.48px;
+}
+
+.site_title{
+    font-size:36px;
+    font-family: 'DM Sans', sans-serif;
+    line-height:46.87px;
+    color:#D04F4F;
+}
+
+/*Searchbar principale*/
+
+.parent-container{
+    max-width:1240px;
+    text-align:center;
+    margin:auto;
+}
+
+.searchbar_container{
+    position:relative;
+}
+
+.main-searchbar{
+    width:100%;
+    background-color:#E7E7E7;
+    border:none;
+    height:66px;
+    line-height:66px;
+    border-radius:5px;
+    padding:0 24px;
+    margin:0 0 35px 0;
+    font-size:18px;
+}
+
+input:focus-visible{
+    outline:none;
+}
+
+.searchbar_container > i{ 
+    position:absolute;
+    right:0;
+    font-size:32.06px;
+    top:16.97px;
+    display:inline-block;
+}
+
+/*Tags*/
+.filter-container_inputs-container{
+    display:flex;
+}
+
+.input-container{
+    position:relative;
+    color:white;
+    border-radius:5px;
+    padding:0 19px;
+    margin:0 20px 0 0;
+}
+
+.input-container > input{
+    height:69px;
+    line-height:69px;
+    border:none;
+    font-size:18px;
+    box-sizing:border-box;
+    color:white;
+    background-color:transparent;
+}
+
+.input-container > input::placeholder{
+    color:white;
+}
+
+.input-container:nth-child(1){
+    background-color:#3282F7;
+}
+.input-container:nth-child(2){
+    background-color:#68D9A4
+    ;
+}
+.input-container:nth-child(3){
+    background-color:#ED6454;
+}
+
+.input-container > span{
+    position:absolute;
+    right:19px;
+    top:26.5px;
+}

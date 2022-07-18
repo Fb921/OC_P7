@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/17e76f62da.js" crossorigin="anonymous"></script>
+    <title>Les petit plats</title>
+  </head>
+  <body>
+    <header>
+        <img src="images/cook.png" class="logo"/>
+        <div class="site_title">Les petit plats</div>
+    </header>
+    <main>
+        <div class="searchbar_container parent-container">
+            <input class="main-searchbar" placeholder="Rechercher une recette"/>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="filter_container  parent-container">
+            <div class="filter-container_tag-container"></div>
+            <div class="filter-container_inputs-container">
+                <div class="input-container"><input placeholder="Ingrédients"><span><i class="fa-solid fa-chevron-down"></i></span></div>
+                <div class="input-container"><input placeholder="Appareils"><span><i class="fa-solid fa-chevron-down"></i></span></div>
+                <div class="input-container"><input placeholder="Ustensiles"><span><i class="fa-solid fa-chevron-down"></i></span></div>
+        </div>
+        <div class="recettes_container parent-container"></div>
+        
+    </main>
+    <script src="scripts/load-recipe.js"></script>
+    <script src="scripts/search.js"></script>
+  </body>
+</html>
