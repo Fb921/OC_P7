@@ -111,13 +111,15 @@ input:focus-visible{
     overflow:hidden;
 }
 .img_container{
-    height:200px;
+    height:178px;
     background-color:#C7BEBE;
 }
 .recipe-infos_container{
     padding:20px 20px 19px 20px;
     text-align:left;
     background-color:#E7E7E7;
+    height:186px;
+    box-sizing:border-box;
 }
 .shortdesc{
     justify-content:space-between;
@@ -127,6 +129,7 @@ input:focus-visible{
 .recettes_container > article h2{
     margin:0;
     font-weight:400;
+    font-size:18px;
     line-height:21.6px
 }
 .time_container{
@@ -138,9 +141,22 @@ input:focus-visible{
     margin:20px 0 0 0;
     font-size:12px;
     display:flex;
+
 }
-.ingredients-container,.instructions-container{
+
+.ingredients-container{
     width:50%;
+    line-height:12px;
+}
+
+.instructions-container{
+    width:50%;
+    line-height:12px;
+    display:-webkit-box;
+    height:calc(12px * 6);
+    -webkit-line-clamp:6;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
 }
 .ingredient_name{
     font-weight:bold;
