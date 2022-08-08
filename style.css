@@ -36,6 +36,7 @@ header{
     padding:0 24px;
     margin:0 0 35px 0;
     font-size:18px;
+    box-sizing:border-box;
 }
 
 input:focus-visible{
@@ -44,7 +45,7 @@ input:focus-visible{
 
 .searchbar_container > i{ 
     position:absolute;
-    right:0;
+    right:20px;
     font-size:32.06px;
     top:16.97px;
     display:inline-block;
@@ -60,8 +61,10 @@ input:focus-visible{
     position:relative;
     color:white;
     border-radius:5px;
-    padding:0 19px;
     margin:0 20px 0 0;
+    height:69px;
+    text-align:left;
+    grid-template-columns:repeat(3, auto);
 }
 
 .input-container > input{
@@ -72,7 +75,11 @@ input:focus-visible{
     font-size:18px;
     box-sizing:border-box;
     color:white;
+    padding:0 19px;
     background-color:transparent;
+}
+.input-container > input + span{
+    cursor:pointer;
 }
 
 .input-container > input::placeholder{
@@ -81,6 +88,40 @@ input:focus-visible{
 
 .input-container:nth-child(1){
     background-color:#3282F7;
+}
+
+.key-words_container{
+    padding:20px;
+    display:none;
+    grid-template-columns: repeat(3, 170px);
+    flex-wrap:wrap;
+    font-family:Lato;
+    border-radius: 0 0 5px 5px;
+}
+.key-words_container[id="ingredient-kw_container"],.i-tag{
+    background-color:#3282F7;
+}
+.key-words_container[id="appliance-kw_container"], .a-tag{
+    background-color:#68D9A4;
+}
+.key-words_container[id="ustensil-kw_container"], .u-tag{
+    background-color:#ED6454;
+}
+.key-words_container > div{
+    width:auto;
+    padding:5px 15px 5px 0;
+    cursor:pointer;
+}
+.filter-container_tag-container{
+    text-align:left;
+}
+.tagElement{
+    display:inline-block;
+    padding:10px 15px;
+    border-radius:5px;
+    font-family:Lato;
+    color:white;
+    margin:0 10px 20px 0;
 }
 .input-container:nth-child(2){
     background-color:#68D9A4
