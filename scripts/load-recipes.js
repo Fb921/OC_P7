@@ -115,11 +115,8 @@ function createTag(e){
         element.setAttribute("class","tagElement i-tag");
         let ing = filterWIngredient(e.textContent);
         if(lastIAUFilterResult.length == 0){
-            console.log("length is 0");
             lastIAUFilterResult = ing; 
-        }else{
-            lastIAUFilterResult = getCommonRecipes(ing,lastIAUFilterResult);
-        }
+        }else{lastIAUFilterResult = getCommonRecipes(ing,lastIAUFilterResult);}
         /*On s'assure que ce n'est pas la premiere recherche */
         if(lastFilterResult.length == 0){
             lastFilterResult = ing;
@@ -128,9 +125,27 @@ function createTag(e){
     }
     else if(e.id.indexOf("appliance") > -1){
         element.setAttribute("class","tagElement a-tag");
+        let app = filterWAppliance(e.textContent);
+        if(lastIAUFilterResult.length == 0){
+            lastIAUFilterResult = app; 
+        }else{lastIAUFilterResult = getCommonRecipes(app,lastIAUFilterResult);}
+        /*On s'assure que ce n'est pas la premiere recherche */
+        if(lastFilterResult.length == 0){
+            lastFilterResult = app;
+        }else{lastFilterResult = getCommonRecipes(app,lastFilterResult);}
+        displayRecipes(lastFilterResult);
     }
     else if(e.id.indexOf("ustensil") > -1){
         element.setAttribute("class","tagElement u-tag");
+        let ust = filterWUstensil(e.textContent);
+        if(lastIAUFilterResult.length == 0){
+            lastIAUFilterResult = ust; 
+        }else{lastIAUFilterResult = getCommonRecipes(ust,lastIAUFilterResult);}
+        /*On s'assure que ce n'est pas la premiere recherche */
+        if(lastFilterResult.length == 0){
+            lastFilterResult = ust;
+        }else{lastFilterResult = getCommonRecipes(ust,lastFilterResult);}
+        displayRecipes(lastFilterResult);
     }
     kw_tab.push(e.textContent);
     element.setAttribute("id","tag-"+e.id);
@@ -144,11 +159,16 @@ function createTag(e){
 
 function closeFilter(id){
     filter_activated--;
+    console.log(filter_activated);
     if(filter_activated == 0){
+        console.log('filter_activated == 0');
         let index = allIAUFilterResultIndex[document.querySelector("#"+id).textContent];
         delete(allIAUFilterResultIndex[document.querySelector("#"+id).textContent]);
         allIAUFilterResult.splice(index,1);
-        if(mainbarFilterResult.length == 0){
+        console.log('allIAUFilterResult');
+        console.log(allIAUFilterResult);
+        lastIAUFilterResult = [];
+        if(mainbarFilterResult.length == 0 && (document.querySelector('.main-searchbar').value.length < 2)){
             lastFilterResult = recipes;
         }else{lastFilterResult = mainbarFilterResult;}
         displayRecipes(lastFilterResult);
@@ -157,6 +177,7 @@ function closeFilter(id){
         delete(allIAUFilterResultIndex[document.querySelector("#"+id).textContent]);
         allIAUFilterResult.splice(index,1);
         let filters = filterCommonRecipes(allIAUFilterResult);
+        lastIAUFilterResult = filters;
         if(mainbarFilterResult.length == 0){
             lastFilterResult = filters;
         }else{

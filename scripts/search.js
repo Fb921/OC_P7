@@ -318,7 +318,6 @@ function filterWMainbar(str){
 }
 
 function filterWIngredient(str){
-    console.log("filterWI");
     let s = str.toLowerCase();
     filter_activated++;
     let filtered_recipes = [];
@@ -332,35 +331,36 @@ function filterWIngredient(str){
     })
     allIAUFilterResult.push(filtered_recipes);
     allIAUFilterResultIndex[str]= filter_activated-1;
-
     return filtered_recipes;
 }
 function filterWAppliance(str){
     let s = str.toLowerCase();
+    filter_activated++;
     let filtered_recipes = [];
     recipes.forEach(i => {
-        if(i.appliance.indexOf(s) > -1){
+        if(i.appliance.toLowerCase().indexOf(s) > -1){
             filtered_recipes.push(i);            
         }
     })
     allIAUFilterResult.push(filtered_recipes);
+    allIAUFilterResultIndex[str]= filter_activated-1;
     return filtered_recipes;
 }
 function filterWUstensil(str){
     let s = str.toLowerCase();
+    filter_activated++;
     let filtered_recipes = [];
     recipes.forEach(i => {
         let inUstensil = false;
         for(let y = 0;y < i.ustensils.length;y++){
             if(i.ustensils[y].toLowerCase().indexOf(s) > -1){
-                inUstensil= true;
-            }
+                inUstensil= true;}
         }
         if(inUstensil){
-            filtered_recipes.push(i);            
-        }
+            filtered_recipes.push(i);}
     })
-    allFilterResult.push(filtered_recipes);
+    allIAUFilterResult.push(filtered_recipes);
+    allIAUFilterResultIndex[str]= filter_activated-1;
     return filtered_recipes;
 }
 
@@ -399,10 +399,17 @@ function displayRecipes(t){
 
 document.querySelector('.main-searchbar').oninput = function searchWMainbar(){
     let search = document.querySelector('.main-searchbar').value.toLowerCase();
-    let common = filterWMainbar(search);
+    let common;
+    if(search.length > 2){
+        common = filterWMainbar(search);
+    }else{
+        common = recipes;
+        mainbarFilterResult = recipes;
+        console.log("mainFilterResult");
+        console.log(mainbarFilterResult);
+    }
     if(filter_activated > 0){
         lastFilterResult = getCommonRecipes(common,lastIAUFilterResult);
-        
     }else{lastFilterResult = common;}
     displayRecipes(lastFilterResult);
 }
